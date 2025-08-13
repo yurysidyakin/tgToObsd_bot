@@ -8,7 +8,7 @@ MAIN_KB = ReplyKeyboardMarkup(
 )
 
 START_KB = ReplyKeyboardMarkup(
-    keyboard=[[KeyboardButton(text="Запустить")]],  # Изменён текст кнопки
+    keyboard=[],  # Убрана кнопка "Запустить"
     resize_keyboard=True,
     one_time_keyboard=False,
 )
