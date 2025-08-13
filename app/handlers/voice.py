@@ -16,6 +16,8 @@ def get_voice_router(settings=None) -> Router:
     async def handle_voice(message: types.Message, bot: Bot):
         user = message.from_user.full_name or message.from_user.first_name or str(message.from_user.id)
 
+        await message.answer("Ваше сообщение обрабатывается, пожалуйста, подождите...")  # Уведомление об обработке
+
         try:
             with tempfile.TemporaryDirectory() as tmpdir:
                 ogg_path = os.path.join(tmpdir, f"{message.voice.file_unique_id}.ogg")
