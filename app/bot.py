@@ -16,10 +16,12 @@ from app.handlers.start import start_handler_command
 from app.handlers.help import help_handler_command
 from app.handlers.voice import handle_voice
 from app.keyboards.commands import setup_bot_commands
+from aiogram.enums import ParseMode 
+from aiogram.client.default import DefaultBotProperties
 
 
 
-def create_bot(settings: Settings) -> Bot:
+def create_bot(settings: Settings,default=DefaultBotProperties(parse_mode=ParseMode.HTML),) -> Bot:
     return Bot(token=settings.token)
 
 def create_dispatcher() -> Dispatcher:
