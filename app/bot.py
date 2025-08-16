@@ -19,10 +19,7 @@ from app.keyboards.commands import setup_bot_commands
 from aiogram.enums import ParseMode 
 from aiogram.client.default import DefaultBotProperties
 
-
-
-def create_bot(settings: Settings,default=DefaultBotProperties(parse_mode=ParseMode.HTML),) -> Bot:
-    return Bot(token=settings.token)
+def create_bot(settings: Settings) -> Bot: return Bot( token=settings.token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 
 def create_dispatcher() -> Dispatcher:
     return Dispatcher()
@@ -39,7 +36,7 @@ async def main():
 
 
     await setup_bot_commands(bot)
-    print("Бот запущен и готов к работе!")  # Сообщение о запуске бота
+    print("Бот запущен и готов к работе!")  
 
     await dp.start_polling(bot)
 

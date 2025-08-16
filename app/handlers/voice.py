@@ -1,7 +1,6 @@
 import os
 import tempfile
 from aiogram import Router, F, Bot, types
-from app.keyboards.reply import START_KB
 from app.config import load_settings  # Заменён импорт Settings на load_settings
 from app.services.transcribe import transcribe_file
 from app.services.obsidian import append_note
@@ -33,8 +32,7 @@ def get_voice_router(settings=None) -> Router:
                 )
 
                 if not text:
-                    await message.answer("Не удалось распознать речь.", reply_markup=START_KB)
-                    return
+                    await message.answer("Не удалось распознать речь.")
 
                 note_line = f"- **{user}**: {text}"
                 await append_note(
@@ -44,12 +42,12 @@ def get_voice_router(settings=None) -> Router:
                     content=note_line,
                 )
 
-            await message.answer("Готово! Текст добавлен в вашу заметку Obsidian.", reply_markup=START_KB)
+            await message.answer("Готово! Текст добавлен в вашу заметку Obsidian.")
         except FileNotFoundError as e:
-            await message.answer("Ошибка при обработке аудио. Проверьте, что установлен ffmpeg.", reply_markup=START_KB)
+            await message.answer("Ошибка при обработке аудио. Проверьте, что установлен ffmpeg.")
             print("ffmpeg/File error:", e)
         except Exception as e:
-            await message.answer("Произошла ошибка при распознавании. Подробности в логах.", reply_markup=START_KB)
+            await message.answer("Произошла ошибка при распознавании. Подробности в логах.")
             print("Transcribe error:", e)
 
     return router
