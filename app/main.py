@@ -5,6 +5,7 @@ from app.handlers import setup_routers
 from app.keyboards.commands import setup_bot_commands
 
 async def main():
+    
     settings = load_settings()
     bot = create_bot(settings)
     dp = create_dispatcher()

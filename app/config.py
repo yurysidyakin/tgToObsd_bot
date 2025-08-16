@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from dotenv import load_dotenv, find_dotenv
 
+
 @dataclass
 class Settings:
     token: str
@@ -30,6 +31,7 @@ def load_settings() -> Settings:
         whisper_model=os.getenv("WHISPER_MODEL", "small"),
         whisper_device=os.getenv("WHISPER_DEVICE", "cpu"),
         time_format=os.getenv("TIME_FORMAT", "%Y-%m-%d %H:%M"),
+          
     )
 
     settings.vault_dir.mkdir(parents=True, exist_ok=True)
